@@ -1,5 +1,5 @@
 const mysql = require('mysql');  //My-sql을 사용하였다.
-const info = require("../common/db_info")
+const info = require("../Common/db_info")
 const pool = mysql.createPool(info); // 접속 정보를 이용하여 풀 만들기
 
 var DB = (function(){
