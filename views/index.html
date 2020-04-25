@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#data").click(function(){
+					var id = $(".id").val();
+					var pw = $(".pw").val();
+					
+					var params = {
+						'id' : id
+					   ,'pw' : pw
+					}
+					console.log(params);
+					$.ajax({
+						url:'/about',
+						dataType : 'json',
+						type : 'POST',
+						data : params,
+						success : function(res){
+							console.log(res);
+						}
+						
+					})
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<h1>로그인 페이지</h1>
+		<div>
+			<input class="id" type="text"/>
+			<input class="pw" type="text"/>
+			<input id="data" type="button" value="입력">
+		</div>
+	</body>
+</html>
