@@ -10,8 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.4.1",
     "ejs": "^3.0.2",
     "express": "^4.17.1",
+    "jquery": "^3.5.0",
     "mybatis-mapper": "^0.6.5",
     "mysql": "^2.18.1",
     "node-fetch": "^2.6.0",

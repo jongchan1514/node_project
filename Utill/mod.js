@@ -1,17 +1,7 @@
 const mybatis = require('./format');
-const DB = require('./db');
+const getData = require('./db');
 
 let namespace, id, crud, params, result;
-
-function getData(sql,crud,cb){
-	DB.query(sql, crud, function(data, err){
-		if(err){
-			console.log("err : " + JSON.stringify(err)); 
-		}else{
-			cb(data);
-		}
-	})
-}
 
 var mod = {
 	 func : [

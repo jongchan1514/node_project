@@ -5,6 +5,6 @@
     SELECT
       *
     FROM
-      test
+      UserList
   </select>
 </mapper>

@@ -30,4 +30,14 @@ var DB = (function(){
 		query : result
 	}
 })();
-module.exports = DB
+
+function getData(sql,crud,cb){
+	DB.query(sql, crud, function(data, err){
+		if(err){
+			console.log("err : " + JSON.stringify(err)); 
+		}else{
+			cb(data);
+		}
+	})
+}
+module.exports = getData
