@@ -1,3 +1,58 @@
 body{
 	background-image: url("/img/Wallpaper.jpg");
+	margin : 0;
+	padding : 0;
+	font-family : sans-serif;
+}
+#login{
+	width: 300px;
+	padding : 40px auto;
+	border : 3px;
+	border-color : #FFFFFF;
+	border-radius : 24px;
+	background-color : #FFFFFF;
+	position : absolute;
+	top : 50%; 
+	left : 50%;
+	transform : translate(-50%, -50%);
+	text-align : center;
+}
+
+#login h1{
+	text-transform : uppercase;	
+}
+
+#login input[type = "text"], #login input[type = "password"]{
+	border : 0;
+	background : none;
+	display : block;
+	margin : 20px auto;
+	text-align : center;
+	border : 2px solid #DDA0DD;
+	padding : 14px 10px;
+	width : 200px;
+	outline : none;
+	border-radius : 24px;
+	transition : 0.25s;
+}
+
+#login input[type = "text"]:focus, #login input[type = "password"]:focus{
+	width : 280px;
+	border-color : #FF1493;
+}
+#login input[type = "button"]{
+	border : 0;
+	background : none;
+	display : block;
+	margin : 20px auto;
+	text-align : center;
+	border : 2px solid #FF1493;
+	padding : 14px 40px;
+	outline : none;
+	border-radius : 24px;
+	transition : 0.25s;
+	cursor : pointer;
+}
+#login input[type = "button"]:hover{
+	background : #FF1493;
 }

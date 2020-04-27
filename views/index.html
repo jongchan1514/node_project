@@ -5,37 +5,14 @@
 		<link rel="stylesheet" href="/css/main.css">
 		<script src="/node_modules/jquery/dist/jquery.min.js"></script>
 		<script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-		<script>
-			$(document).ready(function(){
-				$("#data").click(function(){
-					var id = $(".id").val();
-					var pw = $(".pw").val();
-					
-					var params = {
-						'id' : id
-					   ,'pw' : pw
-					}
-					console.log(params);
-					$.ajax({
-						url:'/about',
-						dataType : 'json',
-						type : 'POST',
-						data : params,
-						success : function(res){
-							console.log(res);
-						}
-						
-					})
-				})
-			})
-		</script>
+		<script src="/js/login.js"></script>
 	</head>
 	<body>
-		<div>
-			<h1>로그인 페이지</h1>
-			<input class="id" type="text"/>
-			<input class="pw" type="text"/>
-			<input id="data" type="button" value="입력">
+		<div id="login">
+			<h1>Login</h1>
+			<input class="id" type="text" placeholder="UserName"/>
+			<input class="pw" type="password"  placeholder="Password"/>
+			<input id="data" type="button" value="Login"/>
 		</div>
 	</body>
 </html>
