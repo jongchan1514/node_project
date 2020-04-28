@@ -3,8 +3,17 @@
 <mapper namespace="management">  
   <select id="login">
     SELECT
-      *
-    FROM
-      UserList
+    	  id
+	     ,UserSn
+      FROM
+          UserList
+	 WHERE
+	      1=1
+	 <if test='id != null'>\
+		 <if test='pw != null'>
+		 	AND ID = #{id}
+			AND Password = #{pw}
+		 </if>
+	 </if>
   </select>
 </mapper>
