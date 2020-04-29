@@ -31,8 +31,9 @@ var DB = (function(){
 						}
 					});
 				}
+			}else{
+				console.log("Pool 생성오류");
 			}
-			console.log("Pool 생성오류");
 			connection.on('error', function (err) {
                 connection.release();
                 callback(null, err);
@@ -56,7 +57,7 @@ function getData(sql,crud,cb){
 			   console.log(data.result);
 			}else{
 				console.log("DB성공")
-				cb(data.result);
+				cb(data);
 			}
 		}
 	})

@@ -23,11 +23,10 @@ var mod = {
 				 params = req.body;							// 웹에서 요청한 데이터를 params 변수로 받아오기
 				 let sql = mybatis(namespace,id,params);	// query 생성 하기
 				 getData(sql,crud,function(result){
-					 // var data = JSON.stringify(result);
-					 var data = result;
-							// res.send(data);
-					 if(data.state){
-						console.log(data.result);
+					 if(result.state){
+						 var data = result.result[0];
+						 console.log(data);
+						 res.send(data);
 					 }
 				 })
 			 }
