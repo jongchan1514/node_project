@@ -9,8 +9,16 @@ var mod = {
 			 url : "/" , 
 			 type : "GET" , 
 			 callback :  function func(req, res){
-				 res.render('./view/index.html')
+				 res.redirect('./view/index.html')
 				 console.log("index")
+			 }
+		 },
+		{
+			 url : "/Main" , 
+			 type : "GET" , 
+			 callback :  function func(req, res){
+				 res.redirect('./view/Main.html')
+				 console.log("Main")
 			 }
 		 },
 		 {
@@ -25,8 +33,7 @@ var mod = {
 				 getData(sql,crud,function(result){
 					 if(result.state){
 						 var data = result.result[0];
-						 console.log(data);
-						 res.send(data);
+						 res.json(data);
 					 }
 				 })
 			 }

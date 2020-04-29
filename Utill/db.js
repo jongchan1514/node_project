@@ -8,9 +8,9 @@ var DB = (function(){
 		pool.getConnection(function(err,connection){
 			if(connection){
 				if(err){
-					console.log("connection 오류");
 					connection.release();
 					data.state = false;
+					data.msg = "connection 오류";
 					callback(data);
                 	throw err;
 				}else{
@@ -18,27 +18,29 @@ var DB = (function(){
 						connection.release();
 						var data = {};
 						if (!err) {
-							console.log("SQL 성공");
 							data.state = true;
 							data.result = rows;
+							data.msg = "SQL 성공";
 							callback(data);
 						}
 						else {
-							console.log("SQL 실패");
 							data.state = false;
 							data.result = err;
+							data.msg = "SQL 실패";
 							callback(data);
 						}
 					});
 				}
-			}else{
-				console.log("Pool 생성오류");
-			}
-			connection.on('error', function (err) {
+				connection.on('error', function (err) {
                 connection.release();
                 callback(null, err);
                 throw err;
-            });
+            	});
+			}else{
+				data.state = false;
+				data.msg = "Pool 생성오류"
+				callback(data);
+			}
 		})
 	}
 	return{
@@ -53,8 +55,7 @@ function getData(sql,crud,cb){
 			console.log("err : " + JSON.stringify(err)); 
 		}else{
 			if(!data.state){
-			   console.log("DB작동오류")
-			   console.log(data.result);
+			   console.log(data.msg);
 			}else{
 				console.log("DB성공")
 				cb(data);
