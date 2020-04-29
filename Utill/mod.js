@@ -9,7 +9,7 @@ var mod = {
 			 url : "/" , 
 			 type : "GET" , 
 			 callback :  function func(req, res){
-				 res.render('index.html')
+				 res.render('./view/index.html')
 				 console.log("index")
 			 }
 		 },
@@ -23,9 +23,12 @@ var mod = {
 				 params = req.body;							// 웹에서 요청한 데이터를 params 변수로 받아오기
 				 let sql = mybatis(namespace,id,params);	// query 생성 하기
 				 getData(sql,crud,function(result){
-					console.log("result : " + JSON.stringify(result));
-					var data = JSON.stringify(result)	
-					res.send(data);
+					 // var data = JSON.stringify(result);
+					 var data = result;
+							// res.send(data);
+					 if(data.state){
+						console.log(data.result);
+					 }
 				 })
 			 }
 		 }
