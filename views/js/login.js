@@ -6,18 +6,17 @@ $(document).ready(function(){
 		}
 		console.log(params);
 		$.ajax({
-			url:'/about',
+			url:'/Login',
 			dataType : 'json',
 			type : 'POST',
 			data : params,
 			success : function(res){
-				alert(res.UserCheck);
 				switch(res.UserCheck){
 					case 0 :
 						alert("로그인 실패");
 						break;
 					case 1 :
-						alert("로그인성공");
+						alert("Login Success");
 						location.href="/Main";
 						break;
 					default :

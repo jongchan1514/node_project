@@ -9,8 +9,8 @@ var mod = {
 			 url : "/" , 
 			 type : "GET" , 
 			 callback :  function func(req, res){
-				 res.redirect('./view/index.html')
-				 console.log("index")
+				 res.redirect('./view/Login.html')
+				 console.log("Login Page")
 			 }
 		 },
 		{
@@ -18,11 +18,11 @@ var mod = {
 			 type : "GET" , 
 			 callback :  function func(req, res){
 				 res.redirect('./view/Main.html')
-				 console.log("Main")
+				 console.log("Main Page")
 			 }
 		 },
 		 {
-			 url : "/about" , 
+			 url : "/Login" , 
 			 type : "POST" , 
 			 callback : function func(req, res){
 				 namespace = "management"					// mybatis namespace 정의
@@ -41,4 +41,3 @@ var mod = {
 	 ]
 }
 module.exports = mod
-	
