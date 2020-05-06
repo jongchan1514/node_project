@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoCHjRkUm9pTAiYCOpsx7iXqAsKn9lfJo&callback=initMap"async defer></script>
+	<script>
+		var marker;
+		function initMap() {
+		  var lat = 37.0112668;
+		  var lon = 127.2536452;
+		  window.navigator.geolocation.getCurrentPosition(success, error)
+			function success(position){
+				if(position.coords.latitude && position.coords.longitude){
+				   	lat = position.coords.latitude;
+					lon = position.coords.longitude;
+				}
+			}
+			function error(err){
+				alert("조회 실패 ==>" + err.code);
+			}
+		  
+		  var pointer = new google.maps.LatLng(lat,lon);
+		  var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 13,
+			center: pointer
+		  });
+
+		  marker = new google.maps.Marker({
+			map: map,
+			draggable: true,
+			animation: google.maps.Animation.DROP,
+			position: pointer
+		  });
+		  marker.addListener('click', toggleBounce);
+		}
+
+		function toggleBounce() {
+		  if (marker.getAnimation() !== null) {
+			marker.setAnimation(null);
+		  } else {
+			marker.setAnimation(google.maps.Animation.BOUNCE);
+		  }
+		}
+    </script>
+    <style>
+      #map {
+        height: 100%;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+</body>
+</html>

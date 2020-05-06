@@ -56,7 +56,7 @@ function getData(sql,crud,cb){
 			if(!data.state){
 			   console.log(data.msg);
 			}else{
-				console.log("DB성공");
+				console.log(data.msg);
 				cb(data);
 			}
 		}

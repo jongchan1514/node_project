@@ -10,7 +10,7 @@ var mod = {
 			 type : "GET" , 
 			 callback :  function func(req, res){
 				 res.redirect('./view/Login.html')
-				 console.log("Login Page")
+				 console.log("Login Page");
 			 }
 		 },
 		{
@@ -18,7 +18,23 @@ var mod = {
 			 type : "GET" , 
 			 callback :  function func(req, res){
 				 res.redirect('./view/Main.html')
-				 console.log("Main Page")
+				 console.log("Main Page");
+			 }
+		 },
+		{
+			 url : "/Gis" , 
+			 type : "GET" , 
+			 callback :  function func(req, res){
+				 res.redirect('./view/Gis.html')
+				 console.log("GIS Page");
+			 }
+		 },
+		 		{
+			 url : "/Notice" , 
+			 type : "GET" , 
+			 callback :  function func(req, res){
+				 res.redirect('./view/Notice.html')
+				 console.log("Notice Page");
 			 }
 		 },
 		 {
