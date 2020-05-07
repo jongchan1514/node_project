@@ -14,21 +14,21 @@ app.use(bodyParser.urlencoded({ extended: false })); // for parsing application/
 
 //라우터를 사용 (특정 경로로 들어오는 요청에 대하여 함수를 수행 시킬 수가 있는 기능을 express 가 제공해 주는것)
 const router = express.Router();
-for(var i = 0; i < mod.length; i++){       // 동적 URL 매핑 시작 (반복문)
-	var row = mod[i];                      // 관리 대상 모듈 가져오기
-	var path = row.url;                // 접두사 주소 받아오기
+for(var i = 0; i < mod.length; i++){       
+	var row = mod[i];                    
+	var path = row.url;               
 	var callBack = row.callback;
 	var type = row.type;
 	switch(type){
-		case "GET":                     // GET 방식일 경우 적용
+		case "GET":                    
 		router.route(path).get(callBack);
 		break;
-		case "POST":                    // POST 방식일 경우 적용
+		case "POST":                   
 		router.route(path).post(callBack);
 		break;
 	}
 };
-app.use('/', router);       //라우트 미들웨어를 등록한다
+app.use('/', router);      
 app.use((req, res, next) => { // 404 처리 부분
   res.status(404).send('일치하는 주소가 없습니다!');
 });

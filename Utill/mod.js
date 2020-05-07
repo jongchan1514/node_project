@@ -1,5 +1,6 @@
 const mybatis = require('./format');
 const getData = require('./db');
+const encryption = require('./encryption');
 
 let namespace, id, crud, params, result;
 
@@ -45,12 +46,16 @@ var mod = {
 				 id = "login"								// mybatis id값 정의
 				 crud = "SELECT"							// query 분기를 위한 종류 정의
 				 params = req.body;							// 웹에서 요청한 데이터를 params 변수로 받아오기
+				 
+				 // var password = params.pw;				암호화 진행중
+				 // encryption(password);
+				 
 				 let sql = mybatis(namespace,id,params);	// query 생성 하기
 				 getData(sql,crud,function(result){
-					 if(result.state){
-						 var data = result.result[0];
-						 res.json(data);
-					 }
+				 	if(result.state){
+				 		var data = result.result[0];
+				 		res.json(data);
+				 	}
 				 })
 			 }
 		 }
