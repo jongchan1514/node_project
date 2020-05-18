@@ -20,9 +20,8 @@ function test(password,key){
 }
 module.exports = encryption
 
-https://m.blog.naver.com/PostView.nhn?blogId=tpgns8488&logNo=221336473460&proxyReferer=https:%2F%2Fwww.google.com%2F
-
-https://surhommejk.tistory.com/487?category=782632
+//https://m.blog.naver.com/PostView.nhn?blogId=tpgns8488&logNo=221336473460&proxyReferer=https:%2F%2Fwww.google.com%2F
+//https://surhommejk.tistory.com/487?category=782632
 
 // 비밀번호 저장하기
 // 1. CSPRNG를 사용해서 임의의 소금값을 생성한다.

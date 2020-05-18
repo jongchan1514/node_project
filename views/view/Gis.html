@@ -6,26 +6,13 @@
 	<meta name="viewport" content="initial-scale=1.0">
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoCHjRkUm9pTAiYCOpsx7iXqAsKn9lfJo&callback=initMap"async defer></script>
 	<script>
-		var marker;
+		var marker, lat, lon;
+		navigator.geolocation.getCurrentPosition(function(pos) {
+			lat = pos.coords.latitude;
+			lon = pos.coords.longitude;
+		});
 		function initMap() {
-			var lat = 37.0112668;
-			var lon = 127.2536452;
-			function getLocation() {
-				console.log("start");
-				if (navigator.geolocation) {
-					navigator.geolocation.getCurrentPosition(showPosition);
-				} else {
-					x.innerHTML = "Geolocation is not supported by this browser.";
-				  }
-			}
-			function showPosition(position) {
-				console.log(position);
-				if(position.coords.latitude && position.coords.longitude){
-					alert("현재위치 찾기 성공");
-					lat = position.coords.latitude;
-					lon = position.coords.longitude;
-				}
-			}
+			var geocoder = new google.maps.Geocoder;
 			var pointer = new google.maps.LatLng(lat,lon);
 			var map = new google.maps.Map(document.getElementById('map'), {
 				zoom: 13,
@@ -38,15 +25,23 @@
 				animation: google.maps.Animation.DROP,
 				position: pointer
 			});
-		marker.addListener('click', toggleBounce);
-	}
-		function toggleBounce() {
-		  if (marker.getAnimation() !== null) {
-			marker.setAnimation(null);
-		  } else {
-			marker.setAnimation(google.maps.Animation.BOUNCE);
-		  }
+			marker.addListener('click', function(e) {
+          		console.log( e );
+          		// 위경도 좌표를 요창할 객체를 만들어 줍니다.
+          		var latlng = {
+            	lat: e.latLng.lat(),
+            	lng: e.latLng.lng()
+          		};
+          		console.log( latlng );
+        	});
 		}
+		// function toggleBounce() {
+		//   if (marker.getAnimation() !== null) {
+		// 	marker.setAnimation(null);
+		//   } else {
+		// 	marker.setAnimation(google.maps.Animation.BOUNCE);
+		//   }
+		// }
     </script>
     <style>
       #map {
