@@ -6,7 +6,8 @@
 	<meta name="viewport" content="initial-scale=1.0">
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoCHjRkUm9pTAiYCOpsx7iXqAsKn9lfJo&callback=initMap"async defer></script>
 	<script>
-		var marker, lat, lon;
+		var lat, lon;
+		//현재접속한 위치좌표를 만들어 낸다.
 		navigator.geolocation.getCurrentPosition(function(pos) {
 			lat = pos.coords.latitude;
 			lon = pos.coords.longitude;
@@ -17,31 +18,30 @@
 			var map = new google.maps.Map(document.getElementById('map'), {
 				zoom: 13,
 				center: pointer,
-				title : 'center'
 			});
-			marker = new google.maps.Marker({
+			var marker = new google.maps.Marker({
 				map: map,
 				draggable: true,
 				animation: google.maps.Animation.DROP,
-				position: pointer
+				position: pointer,
+				title : 'center'
 			});
-			marker.addListener('click', function(e) {
-          		console.log( e );
-          		// 위경도 좌표를 요창할 객체를 만들어 줍니다.
-          		var latlng = {
-            	lat: e.latLng.lat(),
-            	lng: e.latLng.lng()
+			//맵에 클릭 이벤트 등록
+			map.addListener('click',function(e){
+				var latlng = {
+            		lat: e.latLng.lat(),
+            		lng: e.latLng.lng()
           		};
           		console.log( latlng );
+			})
+			marker.addListener('click', function(e) {
+				if (marker.getAnimation() !== null) {
+					marker.setAnimation(null);
+				} else {
+					marker.setAnimation(google.maps.Animation.BOUNCE);
+				}
         	});
 		}
-		// function toggleBounce() {
-		//   if (marker.getAnimation() !== null) {
-		// 	marker.setAnimation(null);
-		//   } else {
-		// 	marker.setAnimation(google.maps.Animation.BOUNCE);
-		//   }
-		// }
     </script>
     <style>
       #map {
@@ -61,3 +61,4 @@
 
 https://nicgoon.tistory.com/241
 https://floor5th.tistory.com/88
+https://m.blog.naver.com/PostView.nhn?blogId=seilius&logNo=220034170171&proxyReferer=https:%2F%2Fwww.google.com%2F

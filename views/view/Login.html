@@ -4,21 +4,43 @@
 		<title>Login Page</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1.0">
-		<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
 		<link rel="stylesheet" href="/css/Login.css">
 		<script src="/node_modules/jquery/dist/jquery.min.js"></script>
-		<script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-		<script src="/node_modules/@fortawesome/fontawesome-free/js/fontawesome.min.js"></script>
 		<script src="/js/common.js"></script>
 		<script src="/js/login.js"></script>
 	</head>
 	<body>
-		<div id="login">
-			<h1>Login</h1>
-			<input class="id" type="text" placeholder="UserName"/>
-			<input class="pw" type="password"  placeholder="Password"/>
-			<input id="data" type="button" value="Login"/>
+		<div class="container">
+		  <div class="move">
+			<div class="p-button normal signin animated pulse">SIGN IN</div>
+		  </div>
+		  <div class="welcome">
+			<h4 class="bold welcome-text">Welcome Back!</h4>
+			<p class="normal text">To keep connected with us please login with your personal info</p>
+		  </div>
+		  <div class="hello">
+			<h4 class="bold welcome-text">Hello Friend</h4>
+			<p class="normal text">Enter your personal details and start journey with us</p>
+		  </div>
+		  <div class="form">
+			<h4 class="bold title">Create Account</h4>
+			<div class="icons">
+			  <div class="icon"><i class="fab fa-facebook-f"></i></div>
+			  <div class="icon"><i class="fab fa-github"></i></div>
+			  <div class="icon"><i class="fab fa-twitter"></i></div>
+			</div>
+			<p class="normal light">Or use your email for registration</p>
+			<input type="text" placeholder="Name" class="normal name data" not_null="true" nm="Name">
+			<input type="email" placeholder="Email" class="normal email data" not_null="true" nm="Email">
+			<br/>
+			<input type="password" placeholder="Password" class="normal password data" not_null="true" nm="Password"><br>
+			<p class="normal forgot">Forgot your password?</p>
+			<button class="b-button normal" id="submit">SIGN UP</button>
+		  </div>
 		</div>
 	</body>
 </html>
+
+
+<!-- https://wsss.tistory.com/category/Menu/Accordian%20Menu -->

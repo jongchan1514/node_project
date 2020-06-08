@@ -1,6 +1,7 @@
 const mybatis = require('./format');
 const getData = require('./db');
 const encryption = require('./encryption');
+const fs = require('fs');
 
 let namespace, id, crud, params, result;
 
@@ -10,9 +11,8 @@ var mod = {
 			 url : "/" , 
 			 type : "GET" , 
 			 callback :  function func(req, res){
-				 res.redirect('./view/Login.html')
-				 console.log("Login Page");
-			 }
+				res.render('./view/Login.html',{ title: 'Login' });
+			}
 		 },
 		{
 			 url : "/Main" , 
@@ -39,7 +39,7 @@ var mod = {
 			 }
 		 },
 		 {
-			 url : "/Login" , 
+			 url : "/SignIn" , 
 			 type : "POST" , 
 			 callback : function func(req, res){
 				 namespace = "management"					// mybatis namespace 정의
@@ -47,16 +47,17 @@ var mod = {
 				 crud = "SELECT"							// query 분기를 위한 종류 정의
 				 params = req.body;							// 웹에서 요청한 데이터를 params 변수로 받아오기
 				 
-				 // var password = params.pw;				암호화 진행중
+				 console.log(params);
+				 // var password = params.pw;				    //암호화 진행중
 				 // encryption(password);
 				 
-				 let sql = mybatis(namespace,id,params);	// query 생성 하기
-				 getData(sql,crud,function(result){
-				 	if(result.state){
-				 		var data = result.result[0];
-				 		res.json(data);
-				 	}
-				 })
+				 // let sql = mybatis(namespace,id,params);	// query 생성 하기
+				 // getData(sql,crud,function(result){
+				 // 	if(result.state){
+				 // 		var data = result.result[0];
+				 // 		res.json(data);
+				 // 	}
+				 // })
 			 }
 		 }
 	 ]
