@@ -59,13 +59,11 @@ $(document).ready(function(){
 		if(!flag){
 			$("input[nm=Name]").attr('not_null','true');
 			if(effectiveness("input", "not_null", "true")){
-				console.log()
 				var params = {
 					 'Name' : $(".name").val()
 					,'Email' : $(".email").val()
 					,'Password' : $(".password").val()
 				}
-				console.log(params);
 				RequestPost('/SignUp','json','POST',params,function(res){
 					console.log(res);
 				})
@@ -74,10 +72,9 @@ $(document).ready(function(){
 			$("input[nm=Name]").attr('not_null','fales');
 			if(effectiveness("input", "not_null", "true")){
 				var params = {
-					 'email' : $(".email").val()
-					,'password' : $(".password").val()
+					 'Email' : $(".email").val()
+					,'Password' : $(".password").val()
 				}
-				console.log(params);
 				RequestPost('/SignIn','json','POST',params,function(res){
 					console.log(res);
 				})

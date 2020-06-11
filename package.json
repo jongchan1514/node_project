@@ -20,7 +20,8 @@
     "mybatis-mapper": "^0.6.5",
     "mysql": "^2.18.1",
     "node-fetch": "^2.6.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "pbkdf2-password": "^1.2.1"
   },
   "repository": "http://github.com/jongchan1514/nodemanagement.git"
 }

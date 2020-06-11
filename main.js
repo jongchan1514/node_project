@@ -3,7 +3,7 @@ const app = express();
 const ejs = require('ejs');
 const dirPath = require("path");
 const bodyParser = require('body-parser');
-const mod = require('./Utill/mod').func;
+const mod = require('./Common/mod').func;
 
 app.engine("html", ejs.renderFile);         // 뷰엔진 html : ejs 매핑 정의
 app.set('view engine', 'ejs');

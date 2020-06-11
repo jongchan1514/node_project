@@ -1,6 +1,6 @@
 const db_info = {
-  host: '13.209.47.225',
-  port : '58068' ,
+  host: '54.180.162.47',
+  port : '53478' ,
   user: 'moonstory9',
   database: 'management',
   password : '151412as',
