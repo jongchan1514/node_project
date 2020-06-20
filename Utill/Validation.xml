@@ -7,9 +7,15 @@
 		  FROM
 			 UserList
 		 WHERE 1=1
-	<if test='pw != null'>
 		   AND Email = #{Email}
-	</if>
 		   AND DelYn ='N'
-  </select>
+  	</select>
+	<select id="User_PassCheck">
+		SELECT
+			   Salt
+			 , Password
+		  FROM
+			   UserList
+		 WHERE Email = #{Email} 
+	</select>
 </mapper>

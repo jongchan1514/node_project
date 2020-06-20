@@ -1,3 +1,4 @@
+/*Ajax 사용을 위한 공통함수*/
 function RequestPost(url, dataType, type, params, Callback){
 	$.ajax({
 		url:url,
@@ -8,6 +9,7 @@ function RequestPost(url, dataType, type, params, Callback){
 	})
 }
 
+/*태그 기준으로 Null 체크를 위한 함수*/
 function effectiveness(TagName, AttrName, AttrVal){
 	var Comvine = TagName+"["+AttrName+"="+AttrVal+"]"
 	var Obj = $(Comvine);
@@ -27,6 +29,7 @@ function effectiveness(TagName, AttrName, AttrVal){
 	}
 	return true;
 }
+/*주로 사용하는 영어-> 한글 변환을 위한 함수*/
 function MsgConversion (Check){
 	var Msg
 	switch (Check){
@@ -51,15 +54,16 @@ function MsgConversion (Check){
 	return Msg;
 }
 
+/*입력 형식에 따른 정규표현식 유효성 체크  Check="분기 대상", Data="유효성 확인 할 값"*/
 function DataRegExp(Check,Data){
 	
-	var userIdCheck = RegExp(/^[A-Za-z0-9_\-]{5,20}$/);																  //ID를 체크하기위한 정규식
-	var passwdCheck = RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/); //비밀번호를 체크하기위한 정규식
-	var nameCheck = RegExp(/^[가-힣]{2,6}$/);																		 //이름을 체크하기위한 정규식
-	var nickNameCheck = RegExp(/^[가-힣a-zA-Z0-9]{2,10}$/);															     //닉네임을 체크하기위한 정규식
-	var emailCheck = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);										  //이메일을 체크하기위한 정규식
-	var birthdayCheck = RegExp(/^(19|20)[0-9]{2}(0[1-9]|1[1-2])(0[1-9]|[1-2][0-9]|3[0-1])$/);							  //생년월일을 체크하기위한 정규식
-	var phonNumberCheck = RegExp(/^01[0179][0-9]{7,8}$/);																  //전화번호를 체크하기위한 정규식
+	var userIdCheck = RegExp(/^[A-Za-z0-9_\-]{5,20}$/);																   //ID를 체크하기위한 정규식
+	var passwdCheck = RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/); 				   //비밀번호를 체크하기위한 정규식
+	var nameCheck = RegExp(/^[가-힣]{2,6}$/);																			 //이름을 체크하기위한 정규식
+	var nickNameCheck = RegExp(/^[가-힣a-zA-Z0-9]{2,10}$/);															 //닉네임을 체크하기위한 정규식
+	var emailCheck = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);									  //이메일을 체크하기위한 정규식
+	var birthdayCheck = RegExp(/^(19|20)[0-9]{2}(0[1-9]|1[1-2])(0[1-9]|[1-2][0-9]|3[0-1])$/);						  //생년월일을 체크하기위한 정규식
+	var phonNumberCheck = RegExp(/^01[0179][0-9]{7,8}$/);															  //전화번호를 체크하기위한 정규식
 	
 	var result = {};
 	switch (Check){
@@ -109,3 +113,4 @@ function DataRegExp(Check,Data){
 	}
 	return result;
 }
+

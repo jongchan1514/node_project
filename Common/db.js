@@ -5,7 +5,7 @@ const pool = mysql.createPool(info); // 접속 정보를 이용하여 풀 만들
 var DB = (() => {
 	function result(sql,callback){
 		var data = {};									// 결과데이터,상태값,메시지 등을 담을 객체 생성
-		pool.getConnection((err,connection)=>{	// 생성된 Pool에 Connection한다.
+		pool.getConnection((err,connection)=>{			// 생성된 Pool에 Connection한다.
 			if(connection){								// Connection 성공여부 체크
 				if(err){								// Connection 오류 발생 
 					connection.release();				// Connection 종료

@@ -65,7 +65,7 @@ $(document).ready(function(){
 					,'Password' : $(".password").val()
 				}
 				RequestPost('/SignUp','json','POST',params,function(res){
-					console.log(res);
+					alert(res.Msg);
 				})
 			}
 		}else if(flag){
@@ -76,7 +76,11 @@ $(document).ready(function(){
 					,'Password' : $(".password").val()
 				}
 				RequestPost('/SignIn','json','POST',params,function(res){
-					console.log(res);
+					if(res.State){
+					   	location.href= "/Main.do";
+					}else{
+						alert(res.Msg);
+					}
 				})
 			}
 		}

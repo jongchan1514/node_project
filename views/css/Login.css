@@ -3,8 +3,10 @@
 @import url('https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap');
 
 body{
-  background: #4d4d4d;
+  /* background: #4d4d4d; */
   margin:0;
+  background-image:url("/img/Wallpaper.jpg");
+  background-size : cover;
 }
 
 .bold{
@@ -53,8 +55,7 @@ body{
   width:400px;
   text-align:center;
   z-index:20;
-  background-color:#2ecc71;
-  background-image:url("/img/Wallpaper.jpg");
+  background-color:#F781F3;
   background-size:cover;
   background-position:left;
   transition:all .4s ease;
