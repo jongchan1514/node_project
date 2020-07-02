@@ -38,6 +38,6 @@ app.use((err, req, res, next) => { // 에러 처리 부분
 });
 
 
-var server = app.listen(3000, function(){
+var server = app.listen(3000, ()=>{
     console.log("회원관리 프로젝트 서버 시작")
 });

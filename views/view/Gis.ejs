@@ -1,49 +1,57 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Simple Map</title>
-    <meta charset="utf-8">
-	<meta name="viewport" content="initial-scale=1.0">
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoCHjRkUm9pTAiYCOpsx7iXqAsKn9lfJo&callback=initMap"async defer></script>
-	<script>
-		var lat, lon;
-		//현재접속한 위치좌표를 만들어 낸다.
-		navigator.geolocation.getCurrentPosition(function(pos) {
-			lat = pos.coords.latitude;
-			lon = pos.coords.longitude;
-		});
-		function initMap() {
-			var geocoder = new google.maps.Geocoder;
-			var pointer = new google.maps.LatLng(lat,lon);
-			var map = new google.maps.Map(document.getElementById('map'), {
-				zoom: 13,
-				center: pointer,
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<title>Main Page</title>
+		<link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css">
+		<link href='//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="/css/Gis.css">
+		<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="/node_modules/@fortawesome/fontawesome-free/js/fontawesome.min.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoCHjRkUm9pTAiYCOpsx7iXqAsKn9lfJo&callback=initMap"async defer></script>
+		<script src="/js/main.js"></script>
+		<script>
+			var lat, lon;
+			//현재접속한 위치좌표를 만들어 낸다.
+			navigator.geolocation.getCurrentPosition(function(pos) {
+				lat = pos.coords.latitude;
+				lon = pos.coords.longitude;
 			});
-			var marker = new google.maps.Marker({
-				map: map,
-				draggable: true,
-				animation: google.maps.Animation.DROP,
-				position: pointer,
-				title : 'center'
-			});
-			//맵에 클릭 이벤트 등록
-			map.addListener('click',function(e){
-				var latlng = {
-            		lat: e.latLng.lat(),
-            		lng: e.latLng.lng()
-          		};
-          		console.log( latlng );
-			})
-			marker.addListener('click', function(e) {
-				if (marker.getAnimation() !== null) {
-					marker.setAnimation(null);
-				} else {
-					marker.setAnimation(google.maps.Animation.BOUNCE);
-				}
-        	});
-		}
-    </script>
-    <style>
+			console.log(lat);
+			console.log(lon);
+			function initMap() {
+				var geocoder = new google.maps.Geocoder;
+				var pointer = new google.maps.LatLng(lat,lon);
+				var map = new google.maps.Map(document.getElementById('map'), {
+					zoom: 13,
+					center: pointer,
+				});
+				var marker = new google.maps.Marker({
+					map: map,
+					draggable: true,
+					animation: google.maps.Animation.DROP,
+					position: pointer,
+					title : 'center'
+				});
+				//맵에 클릭 이벤트 등록
+				map.addListener('click',function(e){
+					var latlng = {
+						lat: e.latLng.lat(),
+						lng: e.latLng.lng()
+					};
+					console.log( latlng );
+				})
+				marker.addListener('click', function(e) {
+					if (marker.getAnimation() !== null) {
+						marker.setAnimation(null);
+					} else {
+						marker.setAnimation(google.maps.Animation.BOUNCE);
+					}
+				});
+			}
+    	</script>
+		    <style>
       #map {
         height: 100%;
       }
@@ -53,13 +61,54 @@
         padding: 0;
       }
     </style>
-</head>
-<body>
-    <div id="map"></div>
-</body>
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<span id="home"><span class="icon ion-heart"></span></span>
+				<div class="box">
+					<ul>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">GIS</a></li>
+						<li><a href="#">Books</a></li>
+						<li><a href="#">Continue</a></li>
+					</ul>
+				</div>
+				<span id="menu"><span class="ion-navicon-round"></span></span>
+			</div>
+		</header>
+		<menu>
+			<div class="logo"><a href=""><span class="icon ion-heart"></span></a></div>
+			<span id="close-menu"><span class="ion-close-round"></span></span>
+			<div class="container">
+				<div class="box">
+					<ul>
+						<li><a href="#">Fashion</a></li>
+						<li><a href="#">Fashion Shows</a></li>
+						<li><a href="#">Culture</a></li>
+						<li><a href="#">Magazine</a></li>
+						<li><a href="#">Met Gala</a></li>
+						<li><a href="#">Videos</a></li>
+						<li><a href="" target="_blank">Subscribe</a></li>
+					</ul>
+					<ul>
+						<li><a href="#">Promotions</a></li>
+						<li><a href="#">Vogue Archive</a></li>
+						<li><a href="#">Log In</a> | <a href="#">Register</a></li>
+					</ul>
+					<ul>
+						<li><a class="ion-social-facebook" href="#" target="_blank"></a></li>
+						<li><a class="ion-social-twitter" href="#" target="_blank"></a></li>
+						<li><a class="ion-social-googleplus" href="#" target="_blank"></a></li>
+						<li><a class="ion-social-pinterest" href="#" target="_blank"></a></li>
+						<li><a class="ion-social-instagram" href="#" target="_blank"></a></li>
+					</ul>
+					<div class="sign-up">
+						<a href="#">Sign up for Newsletter<span class="ion-arrow-right-c"></span></a>
+					</div>
+				</div>
+			</div>
+		</menu>
+		<div id="map"></div>
+	</body>
 </html>
-
-<!-- https://nicgoon.tistory.com/241
-https://floor5th.tistory.com/88
-https://m.blog.naver.com/PostView.nhn?blogId=seilius&logNo=220034170171&proxyReferer=https:%2F%2Fwww.google.com%2F
- -->

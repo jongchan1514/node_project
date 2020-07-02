@@ -109,8 +109,8 @@ var mod = {
 						res.json(ResultJson);
 					}
 				})
-			 }
-		 },
+			}
+		},
 		{
 			 url : "/Main.do" , 
 			 type : "GET" , 
@@ -119,8 +119,38 @@ var mod = {
 					res.render('./view/Main',{ title: 'Main' });
 					res.end(data);
 				})
+			}
+		},
+		{
+			 url : "/Gis.do" , 
+			 type : "GET" , 
+			 callback : function func(req, res){
+				fs.readFile('./view/Gis',(err,data)=>{
+					res.render('./view/Gis',{ title: 'Gis' });
+					res.end(data);
+				})
 			 }
-		 }
+		},
+		{
+			 url : "/Blog_input.do" , 
+			 type : "GET" , 
+			 callback : function func(req, res){
+				fs.readFile('./view/Blog_input',(err,data)=>{
+					res.render('./view/Blog_input',{ title: 'Gis' });
+					res.end(data);
+				})
+			}
+		},
+		{
+			 url : "/Blog_Main.do" , 
+			 type : "GET" , 
+			 callback : function func(req, res){
+				fs.readFile('./view/Blog_Main',(err,data)=>{
+					res.render('./view/Blog_Main',{ title: 'Blog' });
+					res.end(data);
+				})
+			}
+		}
 	 ]
 }
 module.exports = mod

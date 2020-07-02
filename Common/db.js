@@ -3,7 +3,7 @@ const info = require("./db_info")
 const pool = mysql.createPool(info); // 접속 정보를 이용하여 풀 만들기
 
 var DB = (() => {
-	function result(sql,callback){
+	let result = (sql,callback) =>{
 		var data = {};									// 결과데이터,상태값,메시지 등을 담을 객체 생성
 		pool.getConnection((err,connection)=>{			// 생성된 Pool에 Connection한다.
 			if(connection){								// Connection 성공여부 체크
@@ -47,7 +47,7 @@ var DB = (() => {
 	}
 })();
 
-function getData(sql,cb){
+const getData = (sql,cb) =>{
 	DB.query(sql, (data, err) => {
 		if(err){
 			console.log("오류")

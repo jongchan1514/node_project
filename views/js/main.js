@@ -2,7 +2,7 @@ $(document).ready(function(){
 	$(function() {
 	  var w = $(window).width(),
 		h = $(window).height();
-	  //$('section').width(w);
+	  $('section').width(w);
 	  $('section').height(h);
 	  $('menu .container').height(h - 60);
 	  $('body').prepend('<div id="overlay">');

@@ -16,6 +16,6 @@
 			 , Password
 		  FROM
 			   UserList
-		 WHERE Email = #{Email} 
+		 WHERE Email = #{Email}
 	</select>
 </mapper>
