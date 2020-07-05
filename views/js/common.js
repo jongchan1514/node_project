@@ -1,5 +1,5 @@
 /*Ajax 사용을 위한 공통함수*/
-function RequestPost(url, dataType, type, params, Callback){
+function fnet(url, dataType, type, params, Callback){
 	$.ajax({
 		url:url,
 		dataType : dataType,

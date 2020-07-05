@@ -1,24 +1,14 @@
-const mybatis = require('./format');
-const Mysql = require('./db');
-const encryption = require('./encryption');
+const mybatis = require('../Common/format');
+const Mysql = require('../Common/db');
+const encryption = require('../Common/encryption');
 const fs = require('fs');
 const crypto = require('crypto');
 
 let mybatis_namespace, mybatis_id, mybatis_filename, params, salt, password, sql;
 
-var mod = {
-	 func : [
-		 {
-			 url : "/" , 
-			 type : "GET" , 
-			 callback :  function func(req, res){
-				fs.readFile('./view/Login',(err,data)=>{
-					res.render('./view/Login',{ title: 'Login' });
-					res.end(data);
-				})
-			}
-		 },
-		 {
+let func = [];
+
+func[0]= {
 			 url : "/SignUp" , 
 			 type : "POST" , 
 			 callback : function func(req, res){
@@ -61,8 +51,8 @@ var mod = {
 					}) 
 				});
 			 }
-		 },
-		{
+		 }
+func[1] = {
 			 url : "/SignIn" , 
 			 type : "POST" , 
 			 callback : function func(req, res){
@@ -110,49 +100,6 @@ var mod = {
 					}
 				})
 			}
-		},
-		{
-			 url : "/Main.do" , 
-			 type : "GET" , 
-			 callback : function func(req, res){
-				fs.readFile('./view/Main',(err,data)=>{
-					res.render('./view/Main',{ title: 'Main' });
-					res.end(data);
-				})
-			}
-		},
-		{
-			 url : "/Gis.do" , 
-			 type : "GET" , 
-			 callback : function func(req, res){
-				fs.readFile('./view/Gis',(err,data)=>{
-					res.render('./view/Gis',{ title: 'Gis' });
-					res.end(data);
-				})
-			 }
-		},
-		{
-			 url : "/Blog_input.do" , 
-			 type : "GET" , 
-			 callback : function func(req, res){
-				fs.readFile('./view/Blog_input',(err,data)=>{
-					res.render('./view/Blog_input',{ title: 'Gis' });
-					res.end(data);
-				})
-			}
-		},
-		{
-			 url : "/Blog_Main.do" , 
-			 type : "GET" , 
-			 callback : function func(req, res){
-				fs.readFile('./view/Blog_Main',(err,data)=>{
-					res.render('./view/Blog_Main',{ title: 'Blog' });
-					res.end(data);
-				})
-			}
 		}
-	 ]
-}
-module.exports = mod
-//test
-//https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+
+module.exports = func;

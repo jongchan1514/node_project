@@ -3,7 +3,7 @@ const app = express();
 const ejs = require('ejs');
 const dirPath = require("path");
 const bodyParser = require('body-parser');
-const mod = require('./Common/mod').func;
+const routelist = require('./Common/routelist');
 
 app.engine("html", ejs.renderFile);         // 뷰엔진 html : ejs 매핑 정의
 app.set('view engine', 'ejs');
@@ -14,20 +14,33 @@ app.use(bodyParser.urlencoded({ extended: false })); // for parsing application/
 
 //라우터를 사용 (특정 경로로 들어오는 요청에 대하여 함수를 수행 시킬 수가 있는 기능을 express 가 제공해 주는것)
 const router = express.Router();
-for(var i = 0; i < mod.length; i++){       
-	var row = mod[i];                    
-	var path = row.url;               
-	var callBack = row.callback;
-	var type = row.type;
-	switch(type){
-		case "GET":                    
-		router.route(path).get(callBack);
-		break;
-		case "POST":                   
-		router.route(path).post(callBack);
-		break;
+
+router.route('/').get(function func(req, res){
+				fs.readFile('./view/Management',(err,data)=>{
+					res.render('./view/Management',{ title: 'Management' });
+					res.end(data);
+				})
+			});	
+	  
+for(var i = 0; i < routelist.length; i++){
+	let RootPath = routelist[i].Path;
+	let FilePath = routelist[i].File
+	let Mod = require(FilePath);
+	for(var j = 0; j < Mod.length; j++){
+		let Path = RootPath + Mod[j].url;
+		let Type = Mod[j].type;
+		let CallBack =  Mod[j].callback;
+		switch(Type){
+			case "GET":                    
+			router.route(Path).get(CallBack);
+			break;
+			case "POST":                   
+			router.route(Path).post(CallBack);
+			break;
+		}	
 	}
 };
+
 app.use('/', router);      
 app.use((req, res, next) => { // 404 처리 부분
   res.status(404).send('일치하는 주소가 없습니다!');

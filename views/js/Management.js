@@ -1,19 +1,15 @@
 $(document).ready(function(){
 
-	let flag = 0;
+	let flag = false;
 
 	$(".signin").on("click", function(){
-	  if(flag == 0){
+	  if(!flag){
 		$(".move").addClass("moving");
 		$(".move").removeClass("start");
-
 		$(".form").addClass("movingForm");
 		$(".form").removeClass("startForm");
-
 		$(".hello").show();
 		$(".welcome").hide();
-
-
 		$(".move").css("background-position", "right");
 
 		setTimeout(function(){
@@ -27,18 +23,14 @@ $(document).ready(function(){
 		  $(".move").css("border-radius","0px 10px 10px 0px");
 		}, 200);
 
-		flag=1;
+		flag=true;
 	  }else{
 		$(".move").removeClass("moving");
 		$(".move").addClass("start");
-
 		$(".form").removeClass("movingForm");
 		$(".form").addClass("startForm");
-
-
 		$(".hello").hide();
 		$(".welcome").show();
-
 		$(".move").css("background-position", "left");
 
 		setTimeout(function(){
@@ -52,7 +44,7 @@ $(document).ready(function(){
 		  $(".move").css("border-radius","10px 0px 0px 10px");
 		}, 200);
 
-		flag=0;
+		flag=false;
 	  }
 	});
 	$("#submit").click(function(){
@@ -64,7 +56,7 @@ $(document).ready(function(){
 					,'Email' : $(".email").val()
 					,'Password' : $(".password").val()
 				}
-				RequestPost('/SignUp','json','POST',params,function(res){
+				fnet('/SignUp','json','POST',params,function(res){
 					alert(res.Msg);
 				})
 			}
@@ -75,7 +67,7 @@ $(document).ready(function(){
 					 'Email' : $(".email").val()
 					,'Password' : $(".password").val()
 				}
-				RequestPost('/SignIn','json','POST',params,function(res){
+				fnet('/SignIn','json','POST',params,function(res){
 					if(res.State){
 					   	location.href= "/Main.do";
 					}else{
