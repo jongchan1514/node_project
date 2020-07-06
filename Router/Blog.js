@@ -7,21 +7,21 @@ let mybatis_namespace, mybatis_id, mybatis_filename, params, salt, password, sql
 let func = [];
 
 func[0] = {
-			 url : "/Blog_input.do" , 
+			 url : "/input.do" , 
 			 type : "GET" , 
 			 callback : function func(req, res){
-				fs.readFile('./view/Blog_input',(err,data)=>{
-					res.render('./view/Blog_input',{ title: 'Blog_input' });
+				fs.readFile('./view/Blog/input',(err,data)=>{
+					res.render('./view/Blog/input',{ title: 'Blog_input' });
 					res.end(data);
 				})
 			}
 		  }
 func[1] = {
-			 url : "/Blog_Main.do" , 
+			 url : "/Main.do" , 
 			 type : "GET" , 
 			 callback : function func(req, res){
-				fs.readFile('./view/Blog_Main',(err,data)=>{
-					res.render('./view/Blog_Main',{ title: 'Blog_Main' });
+				fs.readFile('./view/Blog/Main',(err,data)=>{
+					res.render('./view/Blog/Main',{ title: 'Blog_Main' });
 					res.end(data);
 				})
 			}

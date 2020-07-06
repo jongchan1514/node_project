@@ -5,11 +5,11 @@ let func = [];
 
 func[0] = 
 		{
-			 url : "/Gis.do" , 
+			 url : "/Main.do" , 
 			 type : "GET" , 
 			 callback : function func(req, res){
-				fs.readFile('./view/Gis',(err,data)=>{
-					res.render('./view/Gis',{ title: 'Gis' });
+				fs.readFile('./view/Gis/Main',(err,data)=>{
+					res.render('./view/Gis/Main',{ title: 'Gis' });
 					res.end(data);
 				})
 			 }

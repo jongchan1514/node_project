@@ -17,6 +17,6 @@ $(document).ready(function(){
 		$('section').height(h);
 		$('menu .container').height(h - 60);
 	  });
-
 	});
+	
 })

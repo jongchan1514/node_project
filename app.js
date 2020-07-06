@@ -5,8 +5,10 @@ const dirPath = require("path");
 const bodyParser = require('body-parser');
 const routelist = require('./Common/routelist');
 const fs = require('fs');
+const favicon = require('serve-favicon');
 
 app.use(express.static(dirPath.join(__dirname, "/views"))); // 정적파일 경로 정의
+app.use(favicon(dirPath.join(__dirname, "/views/img", 'favicon.ico')));
 app.set('view engine', 'ejs');
 app.engine("html", ejs.renderFile);         // 뷰엔진 html : ejs 매핑 정의
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
