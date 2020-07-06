@@ -4,10 +4,11 @@ const ejs = require('ejs');
 const dirPath = require("path");
 const bodyParser = require('body-parser');
 const routelist = require('./Common/routelist');
+const fs = require('fs');
 
-app.engine("html", ejs.renderFile);         // 뷰엔진 html : ejs 매핑 정의
-app.set('view engine', 'ejs');
 app.use(express.static(dirPath.join(__dirname, "/views"))); // 정적파일 경로 정의
+app.set('view engine', 'ejs');
+app.engine("html", ejs.renderFile);         // 뷰엔진 html : ejs 매핑 정의
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
 app.use(bodyParser.json());                 		 // json형식의 데이터를 body 객치로 받을수 있게 해준다.
 app.use(bodyParser.urlencoded({ extended: false })); // for parsing application/x-www-form-urlencoded
@@ -20,7 +21,7 @@ router.route('/').get(function func(req, res){
 					res.render('./view/Management',{ title: 'Management' });
 					res.end(data);
 				})
-			});	
+			});
 	  
 for(var i = 0; i < routelist.length; i++){
 	let RootPath = routelist[i].Path;

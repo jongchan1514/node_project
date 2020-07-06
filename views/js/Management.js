@@ -56,7 +56,7 @@ $(document).ready(function(){
 					,'Email' : $(".email").val()
 					,'Password' : $(".password").val()
 				}
-				fnet('/SignUp','json','POST',params,function(res){
+				fnet('/Management/SignUp','json','POST',params,function(res){
 					alert(res.Msg);
 				})
 			}
@@ -67,9 +67,9 @@ $(document).ready(function(){
 					 'Email' : $(".email").val()
 					,'Password' : $(".password").val()
 				}
-				fnet('/SignIn','json','POST',params,function(res){
+				fnet('/Management/SignIn','json','POST',params,function(res){
 					if(res.State){
-					   	location.href= "/Main.do";
+					   	location.href= "/Wellcome/Main.do";
 					}else{
 						alert(res.Msg);
 					}

@@ -7,11 +7,11 @@ let mybatis_namespace, mybatis_id, mybatis_filename, params, sql;
 let func = [];
 
 func[0] = {
-			 url : "/Blog_Main.do" , 
+			 url : "/Main.do" , 
 			 type : "GET" , 
 			 callback : function func(req, res){
-				fs.readFile('./view/Main',(err,data)=>{
-					res.render('./view/Main',{ title: 'Main' });
+				fs.readFile('./view/WellCome',(err,data)=>{
+					res.render('./view/WellCome',{ title: 'WellCome' });
 					res.end(data);
 				})
 			}
