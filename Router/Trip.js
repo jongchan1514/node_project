@@ -1,5 +1,6 @@
 const mybatis = require('../Common/format');
 const Mysql = require('../Common/db');
+const MenuList = require('../Common/MenuList');
 const fs = require('fs');
 let func = [];
 
@@ -7,10 +8,9 @@ func[0] =
 		{
 			 url : "/Main.do" , 
 			 type : "GET" , 
-			 callback : function func(req, res){
-				fs.readFile('./view/Gis/Main',(err,data)=>{
-					res.render('./view/Gis/Main',{ title: 'Gis' });
-					res.end(data);
+			 callback : (req, res)=>{
+				MenuList(2,(result)=>{
+					res.render('./view/Trip/Main',result);
 				})
 			 }
 		}

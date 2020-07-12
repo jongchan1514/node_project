@@ -1,6 +1,6 @@
 let routelist = [
 		 {Path : "/WellCome", File : "./Router/WellCome"},
-		 {Path : "/Gis", File : "./Router/Gis"},
+		 {Path : "/Trip", File : "./Router/Trip"},
 		 {Path : "/Blog", File : "./Router/Blog"},
 		 {Path : "/Management", File : "./Router/Management"},
 	 ]

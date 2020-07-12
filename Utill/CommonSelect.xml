@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CommonSelect">  
+	<select id="ListCall">
+		SELECT 
+			   ml.Menuname
+			 , ml.Common 
+		  FROM Menulist AS ml
+	 LEFT JOIN CommonCode AS cc
+			ON ml.Codeno = cc.Codeno
+		   AND ml.Menucode = cc.Classification
+		 WHERE ml.Codeno = #{Codeno}
+  </select>
+</mapper>
+

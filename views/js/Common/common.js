@@ -113,4 +113,3 @@ function DataRegExp(Check,Data){
 	}
 	return result;
 }
-

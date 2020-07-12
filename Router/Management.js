@@ -11,7 +11,7 @@ let func = [];
 func[0]= {
 			 url : "/SignUp" , 
 			 type : "POST" , 
-			 callback : function func(req, res){
+			 callback : (req, res)=>{
 				 mybatis_namespace = "Validation"									// mybatis namespace 정의
 				 mybatis_id = "User_Check"												// mybatis id값 정의
 				 salt = crypto.randomBytes(128).toString('base64');					// randomByte Salt값 생성
@@ -24,14 +24,14 @@ func[0]= {
 					}
 					let ResultJson = {};
 					sql = mybatis(mybatis_namespace, mybatis_id, params);		// query 생성 하기
-					Mysql(sql,function(result){									// 완성 된 query로 sql 실행
+					Mysql(sql,(result)=>{										// 완성 된 query로 sql 실행
 						if(result.state){
 							var data = result.result[0];
 							if(data.user_check < 1){
 								mybatis_namespace = "InsertData"									// mybatis namespace 정의
 								mybatis_id = "User_Insert"												// mybatis id값 정의
 								sql = mybatis(mybatis_namespace, mybatis_id, params);
-								Mysql(sql,function(result){									// 완성 된 query로 sql 실행
+								Mysql(sql,(result)=>{									// 완성 된 query로 sql 실행
 									if(result.state){
 										ResultJson.Msg = "회원정보가 성공적으로 등록되었습니다."
 										res.json(ResultJson);
@@ -55,14 +55,14 @@ func[0]= {
 func[1] = {
 			 url : "/SignIn" , 
 			 type : "POST" , 
-			 callback : function func(req, res){
+			 callback : (req, res)=>{
 				 mybatis_namespace = "Validation"					// mybatis namespace 정의
 				 mybatis_id = "User_Check"								// mybatis id값 정의
 				 params = req.body;							// 웹에서 요청한 데이터를 params 변수로 받아오기
 				 sql = mybatis(mybatis_namespace, mybatis_id, params);		// query 생성 하기
 				 
 				 let ResultJson = {};
-				 Mysql(sql,function(User_Check_result){									// 완성 된 query로 sql 실행
+				 Mysql(sql,(User_Check_result)=>{									// 완성 된 query로 sql 실행
 					if(User_Check_result.state){
 						var data = User_Check_result.result[0];
 						if(data.user_check < 1){
@@ -73,7 +73,7 @@ func[1] = {
 							mybatis_namespace = "Validation"
 							mybatis_id = "User_PassCheck"
 							sql = mybatis(mybatis_namespace, mybatis_id, params);
-							Mysql(sql,function(User_PassCheck_result){									// 완성 된 query로 sql 실행
+							Mysql(sql,(User_PassCheck_result)=>{									// 완성 된 query로 sql 실행
 								if(User_PassCheck_result.state){
 									var data = data = Object.assign({}, User_PassCheck_result.result[0]);
 									encryption(params.Password, data.Salt,(Hash_data)=>{

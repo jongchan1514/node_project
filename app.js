@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const routelist = require('./Common/routelist');
 const fs = require('fs');
 const favicon = require('serve-favicon');
+const mybatis = require('./Common/format');
+const Mysql = require('./Common/db');
 
 app.use(express.static(dirPath.join(__dirname, "/views"))); // 정적파일 경로 정의
 app.use(favicon(dirPath.join(__dirname, "/views/img", 'favicon.ico')));
@@ -18,13 +20,13 @@ app.use(bodyParser.urlencoded({ extended: false })); // for parsing application/
 //라우터를 사용 (특정 경로로 들어오는 요청에 대하여 함수를 수행 시킬 수가 있는 기능을 express 가 제공해 주는것)
 const router = express.Router();
 
-router.route('/').get(function func(req, res){
-				fs.readFile('./view/Management',(err,data)=>{
-					res.render('./view/Management',{ title: 'Management' });
+router.route('/').get((req, res)=>{
+				fs.readFile('./view/Management/Management',(err,data)=>{
+					res.render('./view/Management/Management',{ title: 'Management' });
 					res.end(data);
 				})
 			});
-	  
+
 for(var i = 0; i < routelist.length; i++){
 	let RootPath = routelist[i].Path;
 	let FilePath = routelist[i].File
