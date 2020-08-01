@@ -6,3 +6,4 @@ function ScriptCombine(jsfiles) {
 }
 ScriptCombine("/js/Common/Menu.js");
 ScriptCombine("/js/Common/common.js");
+ScriptCombine("/js/Common/Modal.js");

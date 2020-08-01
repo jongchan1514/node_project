@@ -12,7 +12,7 @@ func[0] = {
 			 type : "GET" , 
 			 callback : (req, res)=>{
 				MenuList(0,(result)=>{
-					res.render('./view/WellCome',result);
+					res.render('./view/WellCome/Main',result);
 				})
 			}
 		}

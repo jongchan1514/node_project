@@ -21,7 +21,7 @@
 				<% for(var i=0; i<length; i++){ %>
 					<% if (Menu[i].Common != 'Y') {%>
 						<li>
-							<a href="#">
+							<a class="trigger" href="#">
 								<%= Menu[i].Menuname %>
 							</a>
 						</li>
@@ -32,7 +32,7 @@
 				<% for(var i=0; i<length; i++){ %>
 					<% if (Menu[i].Common == 'Y') {%>
 						<li>
-							<a href="#">
+							<a class="trigger" href="#">
 								<%= Menu[i].Menuname %>
 							</a>
 						</li>
